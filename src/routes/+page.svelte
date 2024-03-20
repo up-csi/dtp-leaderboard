@@ -3,7 +3,11 @@
     import Podium from './Podium.svelte';
 </script>
 
-<main class="space-y-4">
+<main class="space-y-8">
+    <header class="text-center font-sans">
+        <h1 class="text-4xl font-bold text-devcamp-red">DevCamp 2024</h1>
+        <h2 class="text-2xl">Leaderboard</h2>
+    </header>
     <section class="flex justify-center gap-8">
         <Podium id={39114273} user="BastiDood" name="Basti Ortiz" score={500} />
         <Podium id={39114273} user="BastiDood" name="Basti Ortiz" score={500} />
