@@ -1,1 +1,5 @@
-<p>Hello world!</p>
+<script>
+    import Podium from './Podium.svelte';
+</script>
+
+<Podium />
