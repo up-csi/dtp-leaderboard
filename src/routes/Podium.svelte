@@ -11,9 +11,9 @@
     export let score: number;
 
     let height: string;
-    if (place === 1) height = '24';
-    else if (place === 2) height = '16';
-    else if (place === 3) height = '12';
+    if (place === 1) height = 'h-24';
+    else if (place === 2) height = 'h-16';
+    else if (place === 3) height = 'h-12';
 </script>
 
 <div class="inline-block space-y-2 text-center">
@@ -29,7 +29,7 @@
         </p>
     </div>
     <span class="font-sans text-xl font-bold text-devcamp-red">{score}</span>
-    <div class="bg-devcamp-dark-red h-{height}">
+    <div class="bg-devcamp-dark-red {height}">
         <p class="leading-10">{place}</p>
     </div>
 </div>
