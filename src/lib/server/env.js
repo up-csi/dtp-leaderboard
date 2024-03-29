@@ -22,5 +22,5 @@ export default {
     GOOGLE_NAMED_RANGE: GOOGLE_NAMED_RANGE || 'all',
     GOOGLE_EMAIL,
     GOOGLE_PRIVATE_ID,
-    GOOGLE_PRIVATE_KEY,
+    GOOGLE_PRIVATE_KEY: GOOGLE_PRIVATE_KEY.replace('\\n', '\n'),
 };

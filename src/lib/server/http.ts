@@ -6,11 +6,14 @@ import env from '$lib/server/env';
 
 export async function createJwt() {
     const key = await importPKCS8(env.GOOGLE_PRIVATE_KEY, 'RS256');
-    return await new SignJWT({ scope: 'https://www.googleapis.com/auth/spreadsheets.readonly' })
+    const jwt = new SignJWT({
+        iss: env.GOOGLE_EMAIL,
+        sub: env.GOOGLE_EMAIL,
+        aud: 'https://oauth2.googleapis.com/token',
+        scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
+    });
+    return await jwt
         .setProtectedHeader({ typ: 'JWT', alg: 'RS256', kid: env.GOOGLE_PRIVATE_ID })
-        .setIssuer(env.GOOGLE_EMAIL)
-        .setSubject(env.GOOGLE_EMAIL)
-        .setAudience('https://oauth2.googleapis.com/token')
         .setIssuedAt(new Date())
         .setExpirationTime('3600 seconds')
         .sign(key);

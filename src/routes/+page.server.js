@@ -23,7 +23,7 @@ export async function load({ fetch }) {
     const users = await fetchSpreadsheet(token, fetch);
     if (typeof users === 'number') error(500, messageFromCode(users));
 
-    const ids = await fetchIds(users);
+    const ids = await fetchIds(users, fetch);
     if (typeof ids === 'number') error(500, messageFromCode(ids));
 
     const rankings = users.map(obj => ({ ...obj, id: ids[obj.user] ?? 10137 }));
