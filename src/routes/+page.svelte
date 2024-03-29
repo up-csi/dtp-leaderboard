@@ -66,37 +66,29 @@
         {/each}
     </section>
 </main>
-<footer class="prose-invert grid grid-cols-[auto_minmax(max-content,1fr)] items-center gap-4 font-sans text-gray-50">
+<footer class="prose-invert grid grid-cols-[auto_1fr] items-center gap-4 font-sans text-gray-50">
     <a href="https://up-csi.org" target="_blank">
         <img src={upcsi} alt="UP Center for Student Innovations Logo" class="h-24" />
     </a>
     <div>
         <p>
-            Coded by Basti Ortiz <a
-                href="https://github.com/BastiDood"
-                target="_blank"
-                class="text-gray-300 hover:underline">(@BastiDood)</a
+            Coded by <a href="https://github.com/BastiDood" target="_blank" class="text-gray-300 hover:underline"
+                >Basti Ortiz</a
             >.
         </p>
         <p>
-            Designed by Jelly Raborar <a
-                href="https://github.com/Anjellyrika"
-                target="_blank"
-                class="text-gray-300 hover:underline">(@Anjellyrika)</a
+            Designed by <a href="https://github.com/Anjellyrika" target="_blank" class="text-gray-300 hover:underline"
+                >Jelly Raborar</a
             >.
         </p>
         <p>
-            Data wrangled by Alquen Sarmiento <a
-                href="https://github.com/Arukuen"
-                target="_blank"
-                class="text-gray-300 hover:underline">(@Arukuen)</a
+            Data wrangled by <a href="https://github.com/Arukuen" target="_blank" class="text-gray-300 hover:underline"
+                >Alquen Sarmiento</a
             >.
         </p>
         <p>
-            DevCamp by the UP Center for Student Innovations <a
-                href="https://github.com/up-csi"
-                target="_blank"
-                class="text-gray-300 hover:underline">(@up-csi)</a
+            DevCamp by the <a href="https://github.com/up-csi" target="_blank" class="text-gray-300 hover:underline"
+                >UP Center for Student Innovations</a
             >.
         </p>
         <p><i>Learn. Create. Innovate.</i></p>
