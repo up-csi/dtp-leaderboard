@@ -5,6 +5,10 @@
     import { assert } from '$lib/assert';
     import upcsi from '$lib/icons/upcsi.svg';
 
+    const lastUpdate = new Date(1711290540000);
+    const datetime = lastUpdate.toISOString();
+    const localeString = lastUpdate.toLocaleString();
+
     // eslint-disable-next-line init-declarations
     export let data;
     $: ({
@@ -19,7 +23,8 @@
         <img src={upcsi} alt="UP Center for Student Innovations Logo" class="inline size-16" />
     </a>
     <h1 class="text-4xl font-bold text-devcamp-red">DevCamp 2024</h1>
-    <h2 class="text-2xl text-gray-300">Leaderboard</h2>
+    <h2 class="text-2xl text-gray-50">Leaderboard</h2>
+    <p class="text-md text-gray-300">As of <time {datetime}>{localeString}</time>.</p>
 </header>
 <main class="space-y-8">
     {#if typeof first !== 'undefined'}
