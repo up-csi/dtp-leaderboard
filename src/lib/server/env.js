@@ -1,5 +1,4 @@
 import assert from 'assert/strict';
-import { building } from '$app/environment';
 import { env } from '$env/dynamic/private';
 
 const {
@@ -12,13 +11,11 @@ const {
     GOOGLE_PRIVATE_KEY,
 } = env;
 
-if (building) {
-    assert(GITHUB_TOKEN, 'no github token provided');
-    assert(GOOGLE_SPREADSHEET_ID, 'no spreadsheet id');
-    assert(GOOGLE_EMAIL, 'no service account email');
-    assert(GOOGLE_PRIVATE_ID, 'no private id');
-    assert(GOOGLE_PRIVATE_KEY, 'no private key');
-}
+assert(GITHUB_TOKEN, 'no github token provided');
+assert(GOOGLE_SPREADSHEET_ID, 'no spreadsheet id');
+assert(GOOGLE_EMAIL, 'no service account email');
+assert(GOOGLE_PRIVATE_ID, 'no private id');
+assert(GOOGLE_PRIVATE_KEY, 'no private key');
 
 export default {
     GITHUB_TOKEN,
