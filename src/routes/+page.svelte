@@ -9,7 +9,7 @@
     $: ({
         podium: [first, second, third, ...others],
         rest,
-    } = data.users);
+    } = data);
     $: assert(others.length === 0, 'podium is too long');
 </script>
 
@@ -19,13 +19,13 @@
         <h2 class="text-2xl">Leaderboard</h2>
     </header>
     {#if typeof first !== 'undefined'}
-        {@const { name, user, score } = first}
+        {@const { id, name, user, score } = first}
         <section class="grid h-[60vh] grid-flow-col grid-cols-3 gap-x-8">
             {#if typeof second !== 'undefined'}
                 <!-- 2nd placer -->
-                {@const { name, user, score } = second}
+                {@const { id, name, user, score } = second}
                 <div class="col-start-1 flex flex-col justify-end">
-                    <Avatar id={98273014} alt={user} />
+                    <Avatar {id} alt={user} />
                     <div class="h-2/4 bg-devcamp-dark-red p-3">
                         <Profile {user} {name} {score} />
                     </div>
@@ -33,16 +33,16 @@
             {/if}
             <!-- 1st placer -->
             <div class="col-start-2 flex flex-col justify-end">
-                <Avatar id={39114273} alt={user} />
+                <Avatar {id} alt={user} />
                 <div class="h-full bg-devcamp-dark-red p-3">
                     <Profile {user} {name} {score} />
                 </div>
             </div>
             {#if typeof third !== 'undefined'}
                 <!-- 3rd placer -->
-                {@const { name, user, score } = third}
+                {@const { id, name, user, score } = third}
                 <div class="col-start-3 flex flex-col justify-end">
-                    <Avatar id={39114273} alt={user} />
+                    <Avatar {id} alt={user} />
                     <div class="h-1/3 bg-devcamp-dark-red p-3">
                         <Profile {user} {name} {score} />
                     </div>
@@ -50,10 +50,10 @@
             {/if}
         </section>
     {/if}
-    <section class="space-y-2">
-        {#each rest as { rank, name, user, score }}
+    <section class="grid grid-flow-row grid-cols-[auto_auto_1fr_auto] items-center gap-2.5">
+        {#each rest as { id, rank, name, user, score }}
             {@const index = rank + 1}
-            <Card id={39114273} {index} {user} {name} {score} />
+            <Card {id} {index} {user} {name} {score} />
         {/each}
     </section>
 </main>

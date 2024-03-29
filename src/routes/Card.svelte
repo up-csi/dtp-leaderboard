@@ -11,7 +11,7 @@
     export let score: number;
 </script>
 
-<div class="grid grid-cols-[auto_auto_1fr_auto] items-center gap-2.5 rounded-md bg-devcamp-gray-900 p-4 shadow-sm">
+<div class="col-span-full grid grid-cols-subgrid items-center gap-3 rounded-md bg-devcamp-gray-900 p-4 shadow-sm">
     <span>{index}</span>
     <img src="https://avatars.githubusercontent.com/u/{id}" alt={name} class="aspect-square size-8 rounded" />
     <div class="flex flex-col justify-center">

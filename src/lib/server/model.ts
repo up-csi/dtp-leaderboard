@@ -5,8 +5,6 @@ export const AccessToken = object({
     token_type: literal('Bearer'),
 });
 
-export type AccessToken = Output<typeof AccessToken>;
-
 export const Sheet = object({
     majorDimension: literal('ROWS'),
     values: array(
@@ -18,4 +16,8 @@ export const Sheet = object({
     ),
 });
 
+export const User = object({ databaseId: number([safeInteger()]) });
+
+export type AccessToken = Output<typeof AccessToken>;
 export type Sheet = Output<typeof Sheet>;
+export type User = Output<typeof User>;

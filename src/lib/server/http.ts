@@ -1,8 +1,8 @@
-import { AccessToken, Sheet } from '$lib/server/model';
+import { AccessToken, Sheet, User } from '$lib/server/model';
 import { SignJWT, importPKCS8 } from 'jose';
+import { object, parse, record } from 'valibot';
 import assert from 'assert/strict';
 import env from '$lib/server/env';
-import { parse } from 'valibot';
 
 export async function createJwt() {
     const key = await importPKCS8(env.GOOGLE_PRIVATE_KEY, 'RS256');
@@ -50,6 +50,39 @@ function indexRankings<T extends Indexable>(rankings: T[]) {
     return rankings;
 }
 
+interface Userable {
+    user: string;
+}
+
+const GitHubUsers = object({ data: record(User) });
+export async function fetchIds<T extends Userable>(rankings: T[], http = fetch) {
+    const inner = rankings
+        .map(({ user }) => {
+            // Temporarily replace dashes with underscores for field names
+            const login = user.trim();
+            const key = login.replaceAll('-', '_');
+            return `${key}:user(login:"${login}"){databaseId}`;
+        })
+        .join('');
+    const query = `query{${inner}}`;
+    const response = await http('https://api.github.com/graphql', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}` },
+        body: JSON.stringify({ query }),
+    });
+    const json = await response.json();
+    if (response.ok) {
+        const { data } = parse(GitHubUsers, json, { abortEarly: true });
+        const entries = Object.entries(data).map(([key, { databaseId }]) => {
+            const field = key.replace('_', '-');
+            return [field, databaseId] as const;
+        });
+        return Object.fromEntries(entries);
+    }
+    console.error(json);
+    return response.status;
+}
+
 const API_ENDPOINT = `https://sheets.googleapis.com/v4/spreadsheets/${env.GOOGLE_SPREADSHEET_ID}/values/${env.GOOGLE_NAMED_RANGE}?majorDimension=ROWS`;
 export async function fetchSpreadsheet(token: string, http = fetch) {
     const response = await http(API_ENDPOINT, {
@@ -68,14 +101,7 @@ export async function fetchSpreadsheet(token: string, http = fetch) {
                 const cmp = b.score - a.score;
                 return cmp === 0 ? a.name.localeCompare(b.name) : cmp;
             });
-        const indexed = indexRankings(rankings);
-        const podium = indexed.splice(0, 3);
-        const [head, ...rest] = indexed;
-        if (typeof head === 'undefined') return { podium, rest };
-        const found = podium.findIndex(ranking => ranking.rank === head.rank);
-        if (found < 0) return { podium, rest: indexed };
-        const reinstated = podium.splice(found);
-        return { podium, rest: reinstated.concat(indexed) };
+        return indexRankings(rankings);
     }
     return response.status;
 }
