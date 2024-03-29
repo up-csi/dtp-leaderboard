@@ -1,15 +1,13 @@
-import assert from 'assert/strict';
-import { env } from '$env/dynamic/private';
-
-const {
+import {
     GITHUB_TOKEN,
-    GOOGLE_TOKEN_URI,
-    GOOGLE_SPREADSHEET_ID,
-    GOOGLE_NAMED_RANGE,
     GOOGLE_EMAIL,
+    GOOGLE_NAMED_RANGE,
     GOOGLE_PRIVATE_ID,
     GOOGLE_PRIVATE_KEY,
-} = env;
+    GOOGLE_SPREADSHEET_ID,
+    GOOGLE_TOKEN_URI,
+} from '$env/static/private';
+import assert from 'assert/strict';
 
 assert(GITHUB_TOKEN, 'no github token provided');
 assert(GOOGLE_SPREADSHEET_ID, 'no spreadsheet id');
