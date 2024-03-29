@@ -9,6 +9,7 @@ export default {
         extend: {
             colors: {
                 'devcamp-red': '#f96743',
+                'devcamp-dark-red': '#6e2e2e',
                 'devcamp-gray': {
                     '50': '#f6f6f6',
                     '100': '#e7e7e7',

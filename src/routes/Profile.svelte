@@ -1,7 +1,5 @@
 <script lang="ts">
     // eslint-disable-next-line init-declarations
-    export let id: number;
-    // eslint-disable-next-line init-declarations
     export let user: string;
     // eslint-disable-next-line init-declarations
     export let name: string;
@@ -9,12 +7,7 @@
     export let score: number;
 </script>
 
-<div class="inline-block space-y-2 text-center">
-    <img
-        src="https://avatars.githubusercontent.com/u/{id}"
-        alt={name}
-        class="aspect-square size-28 rounded-full border-4 border-devcamp-red"
-    />
+<div class="grid grid-rows-[1fr_auto_auto] justify-center space-y-2 text-center">
     <div class="leading-3">
         <p class="text-lg text-gray-50">{name}</p>
         <p class="text-sm text-gray-300">
