@@ -99,7 +99,7 @@
         "radix": "error",
         "require-await": "error",
         "sort-imports": ["error", { "allowSeparatedGroups": true }],
-        "spaced-comment": "warn",
+        "spaced-comment": ["warn", "always", { "markers": ["/"] }],
         "yoda": ["warn", "never", { "exceptRange": true }]
     }
 }
