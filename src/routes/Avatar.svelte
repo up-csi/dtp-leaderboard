@@ -8,5 +8,5 @@
 <img
     src="https://avatars.githubusercontent.com/u/{id}"
     {alt}
-    class="aspect-square rounded-full border-4 border-devcamp-red"
+    class="mx-0 mb-2 aspect-square rounded-full border-4 border-devcamp-red"
 />
