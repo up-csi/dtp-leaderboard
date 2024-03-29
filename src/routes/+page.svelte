@@ -3,6 +3,7 @@
     import Card from './Card.svelte';
     import Profile from './Profile.svelte';
     import { assert } from '$lib/assert';
+    import upcsi from '$lib/icons/upcsi.svg';
 
     // eslint-disable-next-line init-declarations
     export let data;
@@ -13,11 +14,14 @@
     $: assert(others.length === 0, 'podium is too long');
 </script>
 
+<header class="text-center font-sans">
+    <a href="https://up-csi.org" target="_blank">
+        <img src={upcsi} alt="UP Center for Student Innovations Logo" class="inline size-16" />
+    </a>
+    <h1 class="text-4xl font-bold text-devcamp-red">DevCamp 2024</h1>
+    <h2 class="text-2xl text-gray-300">Leaderboard</h2>
+</header>
 <main class="space-y-8">
-    <header class="text-center font-sans">
-        <h1 class="text-4xl font-bold text-devcamp-red">DevCamp 2024</h1>
-        <h2 class="text-2xl">Leaderboard</h2>
-    </header>
     {#if typeof first !== 'undefined'}
         {@const { id, name, user, score } = first}
         <section class="grid h-[60vh] grid-flow-col grid-cols-3 gap-x-8">
@@ -57,3 +61,39 @@
         {/each}
     </section>
 </main>
+<footer class="prose-invert grid grid-cols-[auto_minmax(max-content,1fr)] items-center gap-4 font-sans text-gray-50">
+    <a href="https://up-csi.org" target="_blank">
+        <img src={upcsi} alt="UP Center for Student Innovations Logo" class="h-24" />
+    </a>
+    <div>
+        <p>
+            Coded by Basti Ortiz <a
+                href="https://github.com/BastiDood"
+                target="_blank"
+                class="text-gray-300 hover:underline">(@BastiDood)</a
+            >.
+        </p>
+        <p>
+            Designed by Jelly Raborar <a
+                href="https://github.com/Anjellyrika"
+                target="_blank"
+                class="text-gray-300 hover:underline">(@Anjellyrika)</a
+            >.
+        </p>
+        <p>
+            Data wrangled by Alquen Sarmiento <a
+                href="https://github.com/Arukuen"
+                target="_blank"
+                class="text-gray-300 hover:underline">(@Arukuen)</a
+            >.
+        </p>
+        <p>
+            DevCamp by the UP Center for Student Innovations <a
+                href="https://github.com/up-csi"
+                target="_blank"
+                class="text-gray-300 hover:underline">(@up-csi)</a
+            >.
+        </p>
+        <p><i>Learn. Create. Innovate.</i></p>
+    </div>
+</footer>
