@@ -11,7 +11,7 @@ function messageFromCode(code) {
         case 403:
             return 'Credentials have been revoked in the back-end.';
         default:
-            return `Unexpected status code ${code} from the Google Sheets API.`;
+            return `Unexpected status code ${code} from upstream.`;
     }
 }
 
