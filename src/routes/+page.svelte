@@ -5,7 +5,7 @@
     import { assert } from '$lib/assert';
     import upcsi from '$lib/icons/upcsi.svg';
 
-    const lastUpdate = new Date(1711290540000);
+    const lastUpdate = new Date(1711742545772);
     const datetime = lastUpdate.toISOString();
     const localeString = lastUpdate.toLocaleString();
 
