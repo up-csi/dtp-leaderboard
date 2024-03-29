@@ -2,6 +2,8 @@
     // eslint-disable-next-line init-declarations
     export let id: number;
     // eslint-disable-next-line init-declarations
+    export let index: number;
+    // eslint-disable-next-line init-declarations
     export let user: string;
     // eslint-disable-next-line init-declarations
     export let name: string;
@@ -10,7 +12,7 @@
 </script>
 
 <div class="grid grid-cols-[auto_auto_1fr_auto] items-center gap-2.5 rounded-md bg-devcamp-gray-900 p-4 shadow-sm">
-    <span>#</span>
+    <span>{index}</span>
     <img src="https://avatars.githubusercontent.com/u/{id}" alt={name} class="aspect-square size-8 rounded" />
     <div class="flex flex-col justify-center">
         <span class="text-gray-50">{name}</span>
