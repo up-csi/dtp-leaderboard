@@ -10,6 +10,14 @@ jobs:
   build:
     name: Run Checks
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN:
+      GOOGLE_EMAIL:
+      GOOGLE_NAMED_RANGE:
+      GOOGLE_PRIVATE_ID:
+      GOOGLE_PRIVATE_KEY:
+      GOOGLE_SPREADSHEET_ID:
+      GOOGLE_TOKEN_URI:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
