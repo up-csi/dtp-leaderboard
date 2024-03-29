@@ -1,7 +1,7 @@
 <script>
     import Avatar from './Avatar.svelte';
-    import Profile from './Profile.svelte'
     import Card from './Card.svelte';
+    import Profile from './Profile.svelte';
 </script>
 
 <main class="space-y-8">
