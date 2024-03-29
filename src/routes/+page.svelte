@@ -3,7 +3,7 @@
     import Card from './Card.svelte';
     import Profile from './Profile.svelte';
     import { assert } from '$lib/assert';
-    import upcsi from '$lib/icons/upcsi.svg';
+    import upcsi from '$lib/assets/upcsi.svg';
 
     const lastUpdate = new Date(1711742545772);
     const datetime = lastUpdate.toISOString();
