@@ -1,9 +1,9 @@
-import { type Output, number, object, safeInteger, string } from 'valibot';
+import { type InferOutput, number, object, pipe, safeInteger, string } from 'valibot';
 
 export const User = object({
-    id: number([safeInteger()]),
+    id: pipe(number(), safeInteger()),
     name: string(),
-    score: number([safeInteger()]),
+    score: pipe(number(), safeInteger()),
 });
 
-export type User = Output<typeof User>;
+export type User = InferOutput<typeof User>;

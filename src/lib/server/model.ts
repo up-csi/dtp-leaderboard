@@ -1,4 +1,15 @@
-import { type Output, array, coerce, literal, number, object, safeInteger, string, tuple } from 'valibot';
+import {
+    type InferOutput,
+    array,
+    literal,
+    number,
+    object,
+    pipe,
+    safeInteger,
+    string,
+    transform,
+    tupleWithRest,
+} from 'valibot';
 
 export const AccessToken = object({
     access_token: string(),
@@ -8,16 +19,18 @@ export const AccessToken = object({
 export const Sheet = object({
     majorDimension: literal('ROWS'),
     values: array(
-        tuple(
+        tupleWithRest(
             [string(), string(), string()],
-            // @ts-expect-error - We expect that the `input` is a string.
-            coerce(number([safeInteger()]), input => parseInt(input, 10)),
+            pipe(
+                string(),
+                transform(input => parseInt(input, 10)),
+            ),
         ),
     ),
 });
 
-export const User = object({ databaseId: number([safeInteger()]) });
+export const User = object({ databaseId: pipe(number(), safeInteger()) });
 
-export type AccessToken = Output<typeof AccessToken>;
-export type Sheet = Output<typeof Sheet>;
-export type User = Output<typeof User>;
+export type AccessToken = InferOutput<typeof AccessToken>;
+export type Sheet = InferOutput<typeof Sheet>;
+export type User = InferOutput<typeof User>;

@@ -1,6 +1,6 @@
 import { AccessToken, Sheet, User } from '$lib/server/model';
 import { SignJWT, importPKCS8 } from 'jose';
-import { object, parse, record } from 'valibot';
+import { object, parse, record, string } from 'valibot';
 import assert from 'assert/strict';
 import env from '$lib/server/env';
 
@@ -57,7 +57,7 @@ interface Userable {
     user: string;
 }
 
-const GitHubUsers = object({ data: record(User) });
+const GitHubUsers = object({ data: record(string(), User) });
 export async function fetchIds<T extends Userable>(rankings: T[], http = fetch) {
     const inner = rankings
         .map(({ user }) => {
