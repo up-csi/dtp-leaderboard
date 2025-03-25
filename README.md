@@ -21,7 +21,7 @@
 | `GOOGLE_EMAIL`          | Generated email obtained from the Google service account credentials.                           |
 | `GOOGLE_PRIVATE_ID`     | ID of the service account's private key obtained from the Google service account credentials.   |
 | `GOOGLE_PRIVATE_KEY`    | PKCS#8 private key of the service account obtained from the Google service account credentials. |
-| `PUBLIC_LAST_UPDATE`    | UNIX timestamp of last leaderboard update in milliseconds. |
+| `PUBLIC_LAST_UPDATE`    | UNIX timestamp of last leaderboard update in milliseconds.                                      |
 
 [gh-api]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
 
