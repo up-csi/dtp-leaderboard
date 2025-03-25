@@ -1,11 +1,14 @@
 <script>
+    import { PUBLIC_LAST_UPDATE } from '$env/static/public';
+
     import Avatar from './Avatar.svelte';
     import Card from './Card.svelte';
     import Profile from './Profile.svelte';
     import { assert } from '$lib/assert';
     import upcsi from '$lib/assets/upcsi.svg';
 
-    const lastUpdate = new Date(1719506724597);
+    assert(PUBLIC_LAST_UPDATE, 'no last update');
+    const lastUpdate = new Date(Number(PUBLIC_LAST_UPDATE));
     const datetime = lastUpdate.toISOString();
     const localeString = lastUpdate.toLocaleString();
 
