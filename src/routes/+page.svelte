@@ -1,11 +1,14 @@
 <script>
+    import { PUBLIC_LAST_UPDATE } from '$env/static/public';
+
     import Avatar from './Avatar.svelte';
     import Card from './Card.svelte';
     import Profile from './Profile.svelte';
     import { assert } from '$lib/assert';
     import upcsi from '$lib/assets/upcsi.svg';
 
-    const lastUpdate = new Date(1719506724597);
+    assert(PUBLIC_LAST_UPDATE, 'no last update');
+    const lastUpdate = new Date(Number(PUBLIC_LAST_UPDATE));
     const datetime = lastUpdate.toISOString();
     const localeString = lastUpdate.toLocaleString();
 
@@ -22,7 +25,7 @@
     <a href="https://up-csi.org" target="_blank">
         <img src={upcsi} alt="UP Center for Student Innovations Logo" class="inline size-20" />
     </a>
-    <h1 class="text-4xl font-bold text-devcamp-red">DevCamp 2024</h1>
+    <h1 class="text-4xl font-bold text-devcamp-red">DevCamp 2025</h1>
     <h2 class="text-2xl text-gray-50">Leaderboard</h2>
     <p class="text-md text-gray-300">As of <time {datetime}>{localeString}</time>.</p>
 </header>
