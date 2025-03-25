@@ -18,6 +18,7 @@ jobs:
       GOOGLE_PRIVATE_KEY:
       GOOGLE_SPREADSHEET_ID:
       GOOGLE_TOKEN_URI:
+      PUBLIC_LAST_UPDATE:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
