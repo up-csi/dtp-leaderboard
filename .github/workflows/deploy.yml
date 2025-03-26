@@ -15,7 +15,7 @@ jobs:
       GOOGLE_EMAIL: ${{ secrets.GOOGLE_EMAIL }}
       GOOGLE_PRIVATE_ID: ${{ secrets.GOOGLE_PRIVATE_ID }}
       GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
-      PUBLIC_LAST_UPDATE: ${{ env.PUBLIC_LAST_UPDATE }}
+      PUBLIC_LAST_UPDATE: ${{ vars.PUBLIC_LAST_UPDATE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
