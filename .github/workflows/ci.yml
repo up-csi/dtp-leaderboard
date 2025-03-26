@@ -18,9 +18,12 @@ jobs:
       GOOGLE_PRIVATE_KEY:
       GOOGLE_SPREADSHEET_ID:
       GOOGLE_TOKEN_URI:
+      PUBLIC_LAST_UPDATE:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install Latest Corepack
+        run: npm install -g corepack@latest
       - name: Install `pnpm` via Corepack
         run: corepack enable pnpm
       - name: Get `pnpm` Store Directory
