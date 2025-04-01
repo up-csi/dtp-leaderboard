@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GOOGLE_TOKEN_URI: ${{ secrets.GITHUB_TOKEN }}
+      GOOGLE_TOKEN_URI: ${{ secrets.GITHUB_TOKEN_URI }}
       GOOGLE_SPREADSHEET_ID: ${{ secrets.GOOGLE_SPREADSHEET_ID }}
-      GOOGLE_NAMED_RANGE: ${{ secrets.GOOGLE_SPREADSHEET_ID }}
+      GOOGLE_NAMED_RANGE: ${{ secrets.GOOGLE_NAMED_RANGE }}
       GOOGLE_EMAIL: ${{ secrets.GOOGLE_EMAIL }}
       GOOGLE_PRIVATE_ID: ${{ secrets.GOOGLE_PRIVATE_ID }}
       GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
