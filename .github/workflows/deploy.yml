@@ -46,6 +46,8 @@ jobs:
         run: pnpm sync
 
       - name: Build Website
+        env:
+          BASE_PATH: '/${{ github.event.repository.name }}'
         run: |
           pnpm build
 
