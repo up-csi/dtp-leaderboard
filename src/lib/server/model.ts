@@ -1,15 +1,4 @@
-import {
-    type InferOutput,
-    array,
-    literal,
-    number,
-    object,
-    pipe,
-    safeInteger,
-    string,
-    transform,
-    tuple,
-} from 'valibot';
+import { type InferOutput, array, literal, number, object, pipe, safeInteger, string, transform, tuple } from 'valibot';
 
 export const AccessToken = object({
     access_token: string(),
@@ -19,12 +8,15 @@ export const AccessToken = object({
 export const Sheet = object({
     majorDimension: literal('ROWS'),
     values: array(
-        tuple(
-            [string(), string(), string(), pipe(
+        tuple([
+            string(),
+            string(),
+            string(),
+            pipe(
                 string(),
                 transform(input => parseInt(input, 10)),
-            )]
-        ),
+            ),
+        ]),
     ),
 });
 
