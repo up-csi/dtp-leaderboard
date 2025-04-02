@@ -8,7 +8,7 @@ import {
     safeInteger,
     string,
     transform,
-    tupleWithRest,
+    tuple,
 } from 'valibot';
 
 export const AccessToken = object({
@@ -19,12 +19,11 @@ export const AccessToken = object({
 export const Sheet = object({
     majorDimension: literal('ROWS'),
     values: array(
-        tupleWithRest(
-            [string(), string(), string()],
-            pipe(
+        tuple(
+            [string(), string(), string(), pipe(
                 string(),
                 transform(input => parseInt(input, 10)),
-            ),
+            )]
         ),
     ),
 });

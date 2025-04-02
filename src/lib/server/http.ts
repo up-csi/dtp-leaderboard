@@ -75,7 +75,7 @@ export async function fetchIds<T extends Userable>(rankings: T[], http = fetch) 
     });
     const json = await response.json();
     if (response.ok) {
-        const { data } = parse(GitHubUsers, json, { abortEarly: true });
+        const { data } = parse(GitHubUsers, json, { abortEarly: false });
         const entries = Object.entries(data).map(([key, { databaseId }]) => {
             const field = key.replace('_', '-');
             return [field, databaseId] as const;
@@ -96,9 +96,8 @@ export async function fetchSpreadsheet(token: string, http = fetch) {
     if (response.ok) {
         const { values } = parse(Sheet, json, { abortEarly: true });
         const rankings = values
-            .map(([first, last, user, ...scores]) => {
-                const score = scores.reduce((acc, curr) => acc + curr, 0);
-                return { rank: 0, name: `${first} ${last}`, user, score };
+            .map(([first, last, user, totalScore]) => {
+                return { rank: 0, name: `${first} ${last}`, user, score: totalScore ?? 0 };
             })
             .sort((a, b) => {
                 const cmp = b.score - a.score;
