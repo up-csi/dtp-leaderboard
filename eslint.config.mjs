@@ -1,23 +1,64 @@
-{
-    "root": true,
-    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:svelte/recommended", "prettier"],
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
-    "parserOptions": {
-        "sourceType": "module",
-        "ecmaVersion": 2020,
-        "extraFileExtensions": [".svelte"]
+import { defineConfig, globalIgnores } from "eslint/config";
+import typescriptEslint from "@typescript-eslint/eslint-plugin";
+import globals from "globals";
+import tsParser from "@typescript-eslint/parser";
+import parser from "svelte-eslint-parser";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import js from "@eslint/js";
+import { FlatCompat } from "@eslint/eslintrc";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const compat = new FlatCompat({
+    baseDirectory: __dirname,
+    recommendedConfig: js.configs.recommended,
+    allConfig: js.configs.all
+});
+
+export default defineConfig([globalIgnores([
+    "**/.DS_Store",
+    "**/.svelte-kit",
+    "**/build",
+    "**/node_modules",
+    "**/.env",
+    "**/.env.*",
+    "!**/.env.example",
+    "**/pnpm-lock.yaml",
+    "**/package-lock.json",
+    "**/yarn.lock",
+]), {
+    extends: compat.extends(
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:svelte/recommended",
+        "prettier",
+    ),
+
+    plugins: {
+        "@typescript-eslint": typescriptEslint,
     },
-    "env": { "browser": true, "node": true },
-    "overrides": [
-        {
-            "files": ["*.svelte"],
-            "parser": "svelte-eslint-parser",
-            "parserOptions": { "parser": "@typescript-eslint/parser" }
-        }
-    ],
-    "rules": {
-        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+
+    languageOptions: {
+        globals: {
+            ...globals.browser,
+            ...globals.node,
+        },
+
+        parser: tsParser,
+        ecmaVersion: 2020,
+        sourceType: "module",
+
+        parserOptions: {
+            extraFileExtensions: [".svelte"],
+        },
+    },
+
+    rules: {
+        "@typescript-eslint/no-unused-vars": ["error", {
+            argsIgnorePattern: "^_",
+        }],
+
         "no-constant-binary-expression": "error",
         "no-constructor-return": "error",
         "no-duplicate-imports": "error",
@@ -35,10 +76,10 @@
         "block-scoped-var": "error",
         "class-methods-use-this": "error",
         "consistent-this": ["error", "self"],
-        "curly": ["error", "multi"],
+        curly: ["error", "multi"],
         "default-case": "error",
         "dot-notation": "error",
-        "eqeqeq": "error",
+        eqeqeq: "error",
         "func-style": ["error", "declaration"],
         "init-declarations": "error",
         "logical-assignment-operators": "error",
@@ -96,10 +137,31 @@
         "prefer-rest-params": "error",
         "prefer-spread": "error",
         "prefer-template": "error",
-        "radix": "error",
+        radix: "error",
         "require-await": "error",
-        "sort-imports": ["error", { "allowSeparatedGroups": true }],
-        "spaced-comment": ["warn", "always", { "markers": ["/"] }],
-        "yoda": ["warn", "never", { "exceptRange": true }]
-    }
-}
+
+        "sort-imports": ["error", {
+            allowSeparatedGroups: true,
+        }],
+
+        "spaced-comment": ["warn", "always", {
+            markers: ["/"],
+        }],
+
+        yoda: ["warn", "never", {
+            exceptRange: true,
+        }],
+    },
+}, {
+    files: ["**/*.svelte"],
+
+    languageOptions: {
+        parser: parser,
+        ecmaVersion: 5,
+        sourceType: "script",
+
+        parserOptions: {
+            parser: "@typescript-eslint/parser",
+        },
+    },
+}]);
