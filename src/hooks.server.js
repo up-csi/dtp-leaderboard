@@ -1,4 +1,5 @@
 import { building } from '$app/environment';
+// @ts-expect-error - No typescript declaration file yet, currently a WIP
 import nano from 'htmlnano';
 
 // https://kit.svelte.dev/docs/migrating#integrations-html-minifier
