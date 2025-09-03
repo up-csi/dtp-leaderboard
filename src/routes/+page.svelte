@@ -25,7 +25,7 @@
     <a href="https://up-csi.org" target="_blank">
         <img src={upcsi} alt="UP Center for Student Innovations Logo" class="inline size-20" />
     </a>
-    <h1 class="text-4xl font-bold text-devcamp-red">DevCamp 2025</h1>
+    <h1 class="text-4xl font-bold text-devcamp-red">DTP 2526A</h1>
     <h2 class="text-2xl text-gray-50">Leaderboard</h2>
     <p class="text-md text-gray-300">As of <time {datetime}>{localeString}</time>.</p>
 </header>
