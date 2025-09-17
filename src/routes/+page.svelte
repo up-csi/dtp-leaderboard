@@ -90,14 +90,14 @@
             >.
         </p>
         <p>
-            Updated for the 2425B cycle by <a
+            Updated for the 2526A cycle by <a
                 href="https://github.com/ehrelevant"
                 target="_blank"
-                class="text-gray-300 hover:underline">Ehren Castillo</a
+                class="text-gray-300 hover:underline">Ehren Castillo and Michael Real</a
             >.
         </p>
         <p>
-            DevCamp by the <a href="https://github.com/up-csi" target="_blank" class="text-gray-300 hover:underline"
+            DTP by the <a href="https://github.com/up-csi" target="_blank" class="text-gray-300 hover:underline"
                 >UP Center for Student Innovations</a
             >.
         </p>
